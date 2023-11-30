@@ -1,5 +1,5 @@
 package Domain.Student;
 
-enum Country {
+public enum Country {
     Canada
 };
