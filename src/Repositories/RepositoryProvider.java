@@ -2,11 +2,11 @@ package Repositories;
 
 import java.util.ArrayList;
 
-import Domain.Student.Student;
+import Domain.ToyStudent.ToyStudent;
 
 public class RepositoryProvider {
 
-    public static Repository<Student> buildStudentRepository() {
-        return new InMemoryRepository<Student>(new ArrayList<>(), "Student");
+    public static Repository<ToyStudent> buildStudentRepository() {
+        return new InMemoryRepository<ToyStudent>(new ArrayList<>(), "Student");
     }
 }

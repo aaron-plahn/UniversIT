@@ -3,36 +3,36 @@ package Controllers;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import Domain.Student.Student;
+import Domain.ToyStudent.ToyStudent;
 import QueryParameters.QueryParameters;
 import Repositories.Repository;
 
 public class StudentController {
     // TODO Make this the concrete student type
-    private Repository<Student> repository;
+    private Repository<ToyStudent> repository;
 
-    public StudentController(Repository<Student> repository) {
+    public StudentController(Repository<ToyStudent> repository) {
         this.repository = repository;
     }
 
     // TODO Use `QueryParams`
-    public Optional<Student> fetchById(QueryParameters params) {
+    public Optional<ToyStudent> fetchById(QueryParameters params) {
         return this.repository.fetchById(params.get("id"));
     }
 
-    public ArrayList<Student> fetchMany() {
+    public ArrayList<ToyStudent> fetchMany() {
         return this.repository.fetchMany();
     }
 
     public void create(QueryParameters params) {
-        Student student = new Student(params.get("name"), params.get("id"));
+        ToyStudent student = new ToyStudent(params.get("name"), params.get("id"));
 
         System.out.println("Creating student: " + student);
 
         this.repository.create(student);
     }
 
-    public void update(Student updatedStudent) {
+    public void update(ToyStudent updatedStudent) {
         this.repository.update(updatedStudent);
     }
 }

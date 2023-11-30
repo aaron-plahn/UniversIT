@@ -3,7 +3,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import Controllers.StudentController;
-import Domain.Student.Student;
+import Domain.ToyStudent.ToyStudent;
 import QueryParameters.QueryParameters;
 import Repositories.InMemoryRepository;
 
@@ -14,9 +14,9 @@ public class Router {
 
     private HashMap<String, RequestHandler> routes;
 
-    private InMemoryRepository<Student> studentRepository;
+    private InMemoryRepository<ToyStudent> studentRepository;
 
-    public Router(InMemoryRepository<Student> studentRepository) {
+    public Router(InMemoryRepository<ToyStudent> studentRepository) {
         this.studentRepository = studentRepository;
 
         this.routes = new HashMap<String, RequestHandler>();
@@ -59,10 +59,10 @@ public class Router {
             if (method.equals(GET)) {
                 if (action.equals("")) {
 
-                    Optional<Student> result = controller.fetchById(params);
+                    Optional<ToyStudent> result = controller.fetchById(params);
 
                     if (result.isPresent()) {
-                        Student foundStudent = result.get();
+                        ToyStudent foundStudent = result.get();
 
                         System.out.println("[FOUND]: Student " + foundStudent);
                     } else {

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
-import Domain.Student.Student;
+
+import Domain.ToyStudent.ToyStudent;
 import Repositories.InMemoryRepository;
 
 public class App {
@@ -8,7 +9,7 @@ public class App {
 
         System.out.println("This is a COMP 1130 WL1 (Fall 2023) project.");
 
-        Router router = new Router(new InMemoryRepository<Student>(new ArrayList<Student>(), "Student"));
+        Router router = new Router(new InMemoryRepository<ToyStudent>(new ArrayList<ToyStudent>(), "Student"));
 
         router.execute("POST:students/?id=T1&name=Bobby");
 

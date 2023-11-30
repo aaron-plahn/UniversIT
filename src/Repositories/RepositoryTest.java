@@ -3,19 +3,19 @@ package Repositories;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import Domain.Student.Student;
+import Domain.ToyStudent.ToyStudent;
 
 public class RepositoryTest {
     public static void main(String[] args) {
-        Repository<Student> studentRepository = new InMemoryRepository<>(new ArrayList<Student>(), "Student");
+        Repository<ToyStudent> studentRepository = new InMemoryRepository<>(new ArrayList<ToyStudent>(), "Student");
 
         String id1 = "T445566767";
 
-        Student student1 = new Student("Aaron Plahn", id1);
+        ToyStudent student1 = new ToyStudent("Aaron Plahn", id1);
 
         studentRepository.create(student1);
 
-        Optional<Student> searchResult = studentRepository.fetchById(id1);
+        Optional<ToyStudent> searchResult = studentRepository.fetchById(id1);
 
         if (searchResult.isPresent()) {
             System.out.println("Found student with id: " + id1 + ", " + searchResult);
@@ -25,7 +25,7 @@ public class RepositoryTest {
 
         student1.promote();
 
-        Optional<Student> searchResultForUpdatedStudent = studentRepository.fetchById(id1);
+        Optional<ToyStudent> searchResultForUpdatedStudent = studentRepository.fetchById(id1);
 
         if (searchResultForUpdatedStudent.isPresent()) {
             System.out.println("Found student with id: " + id1 + ", " + searchResult);
@@ -33,7 +33,7 @@ public class RepositoryTest {
             System.out.println("No result found for student with id: " + id1);
         }
 
-        Student student2 = new Student("rookie", "T123");
+        ToyStudent student2 = new ToyStudent("rookie", "T123");
 
         studentRepository.create(student2);
 
