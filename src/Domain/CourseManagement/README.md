@@ -1,0 +1,13 @@
+# Purpose
+The purpose of my section of the project is to take information from the faculty information section and independent information about courses available in our hypothetical school and turn that info into classes (as in learning arrangements, not java classes). The classes made from my section would be further used in the section dedicated to course scheduling, named as course sections to normalize and clarify the naming.
+
+# Design
+	My section will have some independent variables that won’t be taken from existing sections, such as information about courses. It will also be generating information including course IDs and course section names. My main problem to solve in my section will be to find a way to not only combine data types from both internal and external sources into objects for use in another section, but also how to modify the objects made. 
+Design One
+
+From what I can tell, this approach seems to be very straightforward, and I’m having difficulties thinking of drastic differences that would warrant full design changes over basic errata. There’s a very clear intent of what is needed for my section, and what is expected to come out of my section. Unless I am ignorant of a major detail, it is hard to list any pros or cons to this model as there isn’t a clear alternative option to compare it to.
+
+	My tasks in this section are dedicated largely to larger functions than complex functions. I may have to parse some incoming information to strings or enums to have my objects function properly. Each of the objects created will have seven pieces of data stored, and I will have to make sure all the data types line up both inward and outward with what is expected. From that, I will have to construct the courseSection objects with all seven pieces of data, and then create methods to update the courseSection objects. Finally, I will have to create methods to get info from the courseSection objects for different purposes.
+	As I said before, it’s fairly straightforward as to what is expected going into my section and coming out of my section, and I will adapt the data types and naming conventions as needed. Hopefully through in-lab discussion, any of these issues will be naturally smoothed out. 
+    
+	As a final note, I think this section is, if not conveyed already, quite simple, although deals with a rather bulky object being created. I think by this point I understand the purpose of my section, but if I’m getting something wrong, it’ll hopefully be a simple adjustment. (I think from how my section bled into the Scheduling section in discussion is a good example of how simple this section is in concept, but would be a bit much to add either Faculty or Scheduling to it.)
