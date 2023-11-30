@@ -1,3 +1,5 @@
+package Domain.Grade;
+
 public class CourseOutcome {
     private String semester;
     private String courseID;

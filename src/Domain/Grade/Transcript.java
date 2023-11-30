@@ -1,3 +1,5 @@
+package Domain.Grade;
+
 public class Transcript {
     private double totalGradePoints;
     private CourseOutcome[] courseOutcomes;

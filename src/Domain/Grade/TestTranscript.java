@@ -1,3 +1,5 @@
+package Domain.Grade;
+
 public class TestTranscript {
     // this is just a test class
     public static void main(String[] args) throws Exception {
