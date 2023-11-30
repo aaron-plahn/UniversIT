@@ -8,15 +8,11 @@ public class App {
 
         System.out.println("This is a COMP 1130 WL1 (Fall 2023) project.");
 
-        // Router.execute("GET", "foo", "fetchById", "T1");
-
-        // Router.execute("GET", "students", "", "T1");
-
         Router router = new Router(new InMemoryRepository<Student>(new ArrayList<Student>(), "Student"));
 
-        router.execute("POST", "students", "", "John Doe", "T1");
+        router.execute("POST:students/?id=T1&name=Bobby");
 
-        router.execute("GET", "students", "", "T1");
+        router.execute("GET:students/?id=T1");
 
     }
 }

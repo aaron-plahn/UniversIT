@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import Domain.Student.Student;
+import QueryParameters.QueryParameters;
 import Repositories.Repository;
 
 public class StudentController {
@@ -15,15 +16,17 @@ public class StudentController {
     }
 
     // TODO Use `QueryParams`
-    public Optional<Student> fetchById(String id) {
-        return this.repository.fetchById(id);
+    public Optional<Student> fetchById(QueryParameters params) {
+        return this.repository.fetchById(params.get("id"));
     }
 
     public ArrayList<Student> fetchMany() {
         return this.repository.fetchMany();
     }
 
-    public void create(Student student) {
+    public void create(QueryParameters params) {
+        Student student = new Student(params.get("name"), params.get("id"));
+
         System.out.println("Creating student: " + student);
 
         this.repository.create(student);

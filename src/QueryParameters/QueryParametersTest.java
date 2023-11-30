@@ -1,3 +1,5 @@
+package QueryParameters;
+
 public class QueryParametersTest {
     public static void main(String[] args) {
         QueryParameters qps = new QueryParameters("app/users?id=22&name=Bro");

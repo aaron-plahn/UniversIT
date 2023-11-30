@@ -1,11 +1,12 @@
+package QueryParameters;
+
 import java.util.HashMap;
-import java.util.Optional;
 
 public class QueryParameters {
     private HashMap<String, String> paramMap;
 
     // Note that this is quick-and-dirty for demo purposes
-    QueryParameters(String path) {
+    public QueryParameters(String path) {
         this.paramMap = new HashMap<String, String>();
 
         // extract what comes after the ?, e.g. "app/users?name=foo&age=22" ->
@@ -22,7 +23,7 @@ public class QueryParameters {
         }
     }
 
-    String get(String parameterName) {
+    public String get(String parameterName) {
         return this.paramMap.get(parameterName);
     }
 }
