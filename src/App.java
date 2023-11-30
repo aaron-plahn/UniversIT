@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import Domain.Student.Student;
 import Repositories.InMemoryRepository;
-import Repositories.Repository;
 
 public class App {
     public static void main(String[] args) throws Exception {
