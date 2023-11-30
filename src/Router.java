@@ -82,7 +82,21 @@ public class Router {
                 }
 
             }
+        }
 
+        if (scope.equals("grades")) {
+            System.out.println("Not supported: grades");
+            return;
+        }
+
+        if (scope.equals("courses")) {
+            System.out.println("Not supported: courses");
+            return;
+        }
+
+        if (scope.equals("schedule")) {
+            System.out.println("Not supported: schedule");
+            return;
         }
 
         System.out.println("Missing route: " + "[" + method + "] " + scope + "/" + action);

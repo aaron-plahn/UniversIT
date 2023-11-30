@@ -14,5 +14,11 @@ public class App {
 
         router.execute("GET:students/?id=T1");
 
+        router.execute("GET:courses/?id=345");
+
+        router.execute("GET:grades/?studentId=55");
+
+        router.execute("GET:schedule/?timeSlot=1");
+
     }
 }
