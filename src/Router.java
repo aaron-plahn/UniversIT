@@ -1,10 +1,12 @@
 import java.util.HashMap;
 import java.util.Optional;
 
+import Controllers.CourseController;
 import Controllers.StudentController;
+import Domain.CourseManagement.Course;
 import Domain.Student.Student;
 import QueryParameters.QueryParameters;
-import Repositories.InMemoryRepository;
+import Repositories.Repository;
 
 public class Router {
     final static private String GET = "GET";
@@ -13,10 +15,14 @@ public class Router {
 
     private HashMap<String, RequestHandler> routes;
 
-    private InMemoryRepository<Student> studentRepository;
+    private Repository<Student> studentRepository;
 
-    public Router(InMemoryRepository<Student> studentRepository) {
+    private Repository<Course> courseRepository;
+
+    public Router(Repository<Student> studentRepository, Repository<Course> courseRepository) {
         this.studentRepository = studentRepository;
+
+        this.courseRepository = courseRepository;
 
         this.routes = new HashMap<String, RequestHandler>();
     }
@@ -89,8 +95,15 @@ public class Router {
         }
 
         if (scope.equals("courses")) {
-            System.out.println("Not supported: courses");
-            return;
+            CourseController controller = new CourseController(this.courseRepository);
+
+            if (method.equals(POST)) {
+                if (action.equals("create")) {
+                    controller.create(params);
+
+                    return;
+                }
+            }
         }
 
         if (scope.equals("schedule")) {

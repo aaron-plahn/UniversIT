@@ -22,11 +22,13 @@ public class Student implements Entity {
     }
 
     public String toString() {
+        String studentNameAndIdAndMajor = "" + studentInfo.getName() + " (" + studentNumber + ")" + " Major: " + major;
+
+        String classSummary = " enrolled in: " + currentNumberOfClasses + "/" + maxNumberOfClasses + " classes";
+
         if (minor.isEmpty())
-            return studentNumber + " Major: " + major + "enrolled in: " + currentNumberOfClasses + "/"
-                    + maxNumberOfClasses + " classes";
-        return "T007" + studentNumber + " Major: " + major + "Minor:" + minor + currentNumberOfClasses + "/"
-                + maxNumberOfClasses;
+            return studentNameAndIdAndMajor + classSummary;
+        return studentNameAndIdAndMajor + " Minor: " + minor + " " + classSummary;
     }
 
     // private void makeStudentNumber() {

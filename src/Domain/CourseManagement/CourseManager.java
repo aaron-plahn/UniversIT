@@ -12,7 +12,7 @@ public class CourseManager {
     }
 
     public void updateCourse(int index, String ID, String name, String description, int creditValue,
-            Department.department department) {
+            Department department) {
         if (index >= 0 && index < courses.size()) {
             Course course = courses.get(index);
             course.updateCourse(ID, name, description, creditValue, department);

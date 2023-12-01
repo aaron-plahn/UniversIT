@@ -1,14 +1,16 @@
 package Domain.CourseManagement;
 
-public class Course {
+import Repositories.Entity;
+
+public class Course implements Entity {
 
   private String ID;
   private String name;
   private String description;
   private int creditValue;
-  private Department.department courseDepartment;
+  private Department courseDepartment;
 
-  public Course(String ID, String name, String description, int creditValue, Department.department courseDepartment) {
+  public Course(String ID, String name, String description, Department courseDepartment) {
     this.ID = ID;
     this.name = name;
     this.description = description;
@@ -17,12 +19,16 @@ public class Course {
   }
 
   public void updateCourse(String ID, String name, String description, int creditValue,
-      Department.department courseDepartment) {
+      Department courseDepartment) {
     this.ID = ID;
     this.name = name;
     this.description = description;
     this.creditValue = 3;
     this.courseDepartment = courseDepartment;
+  }
+
+  public String getId() {
+    return this.ID;
   }
 
   public String getDescription() {
