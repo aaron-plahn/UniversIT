@@ -58,13 +58,14 @@ public class Router {
     }
 
     public void execute(String method, String scope, String action, QueryParameters params) {
+        StudentController studentController = new StudentController(this.studentRepository);
+
         if (scope.equals("students")) {
-            StudentController controller = new StudentController(this.studentRepository);
 
             if (method.equals(GET)) {
                 if (action.equals("")) {
 
-                    Optional<Student> result = controller.fetchById(params);
+                    Optional<Student> result = studentController.fetchById(params);
 
                     if (result.isPresent()) {
                         Student foundStudent = result.get();
@@ -81,7 +82,7 @@ public class Router {
 
             if (method.equals(POST)) {
                 if (action.equals("")) {
-                    controller.create(params);
+                    studentController.create(params);
 
                     return;
                 }
@@ -90,7 +91,18 @@ public class Router {
         }
 
         if (scope.equals("grades")) {
-            System.out.println("Not supported: grades");
+            if (method.equals(POST)) {
+                if (action.equals("recordGrade")) {
+                    studentController.recordGrade(params);
+                }
+            }
+
+            if (method.equals(GET)) {
+                if (action.equals("transcript")) {
+                    System.out.println(studentController.getTranscript(params));
+                }
+            }
+
             return;
         }
 

@@ -2,6 +2,7 @@ package Domain.Student;
 
 import java.util.ArrayList;
 
+import Domain.Grade.CourseOutcome;
 import Repositories.Entity;
 
 public class Student implements Entity {
@@ -14,6 +15,7 @@ public class Student implements Entity {
     private String major = "undecided";
     private String minor = "";
     private ArrayList<String> courseIDs = new ArrayList<>();
+    private ArrayList<CourseOutcome> courseOutcomes = new ArrayList<CourseOutcome>();
 
     public Student(StudentInfo studentsInfo, String studentNumber) {
         this.studentInfo = studentsInfo;
@@ -86,6 +88,16 @@ public class Student implements Entity {
 
     public String getId() {
         return this.studentNumber;
+    }
+
+    public Student recordCourseOutcome(CourseOutcome courseOutcome) {
+        courseOutcomes.add(courseOutcome);
+
+        return this;
+    }
+
+    public ArrayList<CourseOutcome> getCourseOutcomes() {
+        return courseOutcomes;
     }
 
 }

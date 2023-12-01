@@ -1,5 +1,5 @@
 package Domain.Grade;
 
-enum Grade {
+public enum Grade {
     A, B, C, D, F
 }
