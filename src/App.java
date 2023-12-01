@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 
 import Domain.CourseManagement.Course;
+import Domain.Schedule.Block;
+import Domain.Schedule.ScheduleManager;
 import Domain.Student.Student;
 import Repositories.InMemoryRepository;
 
@@ -17,7 +19,21 @@ public class App {
                 InMemoryRepository<Course> courseRepository = new InMemoryRepository<Course>(new ArrayList<Course>(),
                                 "Course");
 
-                Router router = new Router(studentRepository, courseRepository);
+                String semesterId = "F23";
+
+                ScheduleManager scheduleManager = new ScheduleManager(semesterId);
+
+                scheduleManager.scheduleCourseSection(semesterId, Block.F);
+
+                ArrayList<ScheduleManager> managers = new ArrayList<>();
+
+                managers.add(scheduleManager);
+
+                InMemoryRepository<ScheduleManager> scheduleRepository = new InMemoryRepository<ScheduleManager>(
+                                managers,
+                                "Schedule Manager");
+
+                Router router = new Router(studentRepository, courseRepository, scheduleRepository);
 
                 router.execute(
                                 "POST:students/?id=T1&firstName=Barley&middleName=Boe&lastName=Peep&streetNumber=22&addressLineOne=woofyWay&addressLineTwo=apt3&cityName=Dogville&postalCode=V2G5G6");
@@ -34,9 +50,10 @@ public class App {
                 router.execute("POST:grades/recordGrade?studentId=T1&courseId=COMP2130&grade=C&semester=F23");
 
                 router.execute("GET:grades/transcript?id=T1");
+
                 // router.execute("GET:grades/?studentId=55");
 
-                // router.execute("GET:schedule/?timeSlot=1");
+                router.execute("GET:schedule/full?id=" + semesterId);
 
         }
 }

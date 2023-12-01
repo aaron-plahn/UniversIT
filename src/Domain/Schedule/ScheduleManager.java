@@ -1,6 +1,8 @@
 package Domain.Schedule;
 
-public class ScheduleManager {
+import Repositories.Entity;
+
+public class ScheduleManager implements Entity {
 
     private String semesterId;
     private String[] schedule;
@@ -91,5 +93,9 @@ public class ScheduleManager {
             return 4;
         }
         return -1;
+    }
+
+    public String getId() {
+        return this.semesterId;
     }
 }

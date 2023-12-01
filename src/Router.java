@@ -2,8 +2,10 @@ import java.util.HashMap;
 import java.util.Optional;
 
 import Controllers.CourseController;
+import Controllers.ScheduleManagementController;
 import Controllers.StudentController;
 import Domain.CourseManagement.Course;
+import Domain.Schedule.ScheduleManager;
 import Domain.Student.Student;
 import QueryParameters.QueryParameters;
 import Repositories.Repository;
@@ -19,10 +21,15 @@ public class Router {
 
     private Repository<Course> courseRepository;
 
-    public Router(Repository<Student> studentRepository, Repository<Course> courseRepository) {
+    private Repository<ScheduleManager> scheduleRepository;
+
+    public Router(Repository<Student> studentRepository, Repository<Course> courseRepository,
+            Repository<ScheduleManager> scheduleRepository) {
         this.studentRepository = studentRepository;
 
         this.courseRepository = courseRepository;
+
+        this.scheduleRepository = scheduleRepository;
 
         this.routes = new HashMap<String, RequestHandler>();
     }
@@ -119,8 +126,13 @@ public class Router {
         }
 
         if (scope.equals("schedule")) {
-            System.out.println("Not supported: schedule");
-            return;
+            ScheduleManagementController controller = new ScheduleManagementController(scheduleRepository);
+
+            if (action.equals("full")) {
+                System.out.println(controller.getSchedule(params));
+
+                return;
+            }
         }
 
         System.out.println("Missing route: " + "[" + method + "] " + scope + "/" + action);
